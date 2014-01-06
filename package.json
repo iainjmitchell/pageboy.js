@@ -8,6 +8,8 @@
     "karma-chai" : "*",
     "grunt-karma" : "*",
     "grunt-contrib-jshint" : "*",
-    "grunt-contrib-uglify" : "*"
+    "grunt-contrib-uglify" : "*",
+    "grunt-git": "*",
+    "grunt-shell": "*"
   }
 }
