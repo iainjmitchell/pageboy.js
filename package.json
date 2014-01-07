@@ -10,7 +10,11 @@
     "grunt-karma" : "*",
     "grunt-contrib-jshint" : "*",
     "grunt-contrib-uglify" : "*",
-    "grunt-git": "*",
-    "grunt-shell": "*"
+    "grunt-git" : "*",
+    "grunt-shell" : "*",
+    "grunt-cli" : "*"
+  },
+  "scripts":{
+    "test": "./node_modules/grunt-cli/bin/grunt test"
   }
 }
