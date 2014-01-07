@@ -9,17 +9,19 @@ module.exports = function(config) {
         'tests/**/*.js'
     ],
     preprocessors: {
-      'tests/**/*.html': ['html2js']
+      'tests/**/*.html': ['html2js'],
+      'src/**/*.js' : ['coverage']
     },
     exclude: [
         'src/*.min.js'
     ],
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
     plugins : [
         'karma-mocha',
         'karma-chai',
         'karma-html2js-preprocessor',
-        'karma-phantomjs-launcher'
+        'karma-phantomjs-launcher',
+        'karma-coverage'
     ],
     port: 9876,
     colors: true,

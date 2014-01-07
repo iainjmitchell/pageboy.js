@@ -2,6 +2,7 @@
 	module.Pageboy = function(context){
 		var contextElement = $(context);
 
+
 		this.clickLink = function (linkIdOrText){
 			var linkSelector = 'a#' + linkIdOrText + ', a:contains(' + linkIdOrText + ')';
 			click(linkSelector);

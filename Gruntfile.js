@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 		jshint: {
 			files: ["./**/*.js"],
 			options: {
-				ignores: ["./node_modules/**/*.js"]
+				ignores: ["./node_modules/**/*.js", "./coverage/**/*.js"]
 			}
 		},
 		karma: {
