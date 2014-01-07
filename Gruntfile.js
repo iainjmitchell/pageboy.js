@@ -13,6 +13,18 @@ module.exports = function(grunt) {
 				configFile: 'karma.conf.js'
 			}
 		},
+		coverage: {
+			options: {
+				thresholds: {
+					'statements': 100,
+					'branches': 100,
+					'lines': 100,
+					'functions': 100
+				},
+				dir: 'coverage',
+				root: ''
+			}
+		},
 		gitcommit: {
 			your_target: {
 				options:{
@@ -24,6 +36,9 @@ module.exports = function(grunt) {
 		shell: {
 			git_push: {
 				command: 'git push'
+			},
+			delete_coverage_reports : {
+				command: 'rm -r coverage'
 			}
 		}
 	});
@@ -32,7 +47,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-git');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-karma');
+	grunt.loadNpmTasks('grunt-istanbul-coverage');
 
-	grunt.registerTask('test', ['jshint', 'karma']);
+	grunt.registerTask('test', ['jshint', 'karma', 'coverage', 'shell:delete_coverage_reports']);
 	grunt.registerTask('default',['test','gitcommit', 'shell:git_push']);
 };

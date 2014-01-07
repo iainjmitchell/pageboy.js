@@ -12,7 +12,8 @@
     "grunt-contrib-uglify" : "*",
     "grunt-git" : "*",
     "grunt-shell" : "*",
-    "grunt-cli" : "*"
+    "grunt-cli" : "*",
+    "grunt-istanbul-coverage" : "*"
   },
   "scripts":{
     "test": "./node_modules/grunt-cli/bin/grunt test"
