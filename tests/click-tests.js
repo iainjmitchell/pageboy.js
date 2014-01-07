@@ -15,6 +15,17 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 		});
 	});
 
+	describe("When click link using an existing button's id", function(){
+		it("Then button is NOT clicked", function(done){
+			var EXISTING_BUTTON_ID = 'existingButton';
+			$('#' + EXISTING_BUTTON_ID).click(function(){
+				done('Button should NOT have been clicked');
+			});
+			clickLink(EXISTING_BUTTON_ID);
+			done();
+		});
+	});
+
 	describe("When click link using an existing anchor's link text", function(){
 		it("Then link is clicked", function(done){
 			var EXISTING_LINK_ID = 'existingLink',
@@ -28,5 +39,5 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 });
 
 function clickLink(linkIdOrText){
-	$('#' + linkIdOrText + ', a:contains(' + linkIdOrText + ')').trigger('click');
+	$('a#' + linkIdOrText + ', a:contains(' + linkIdOrText + ')').trigger('click');
 }
