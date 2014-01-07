@@ -14,8 +14,19 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 			clickLink(EXISTING_LINK_ID);
 		});
 	});
+
+	describe("When click link using an existing anchor's link text", function(){
+		it("Then link is clicked", function(done){
+			var EXISTING_LINK_ID = 'existingLink',
+				EXISTING_LINK_TEXT = 'a link';
+			$('#' + EXISTING_LINK_ID).click(function(){
+				done();
+			});
+			clickLink(EXISTING_LINK_TEXT);
+		});
+	});
 });
 
-function clickLink(linkID){
-	$('#' + linkID).trigger('click');
+function clickLink(linkIdOrText){
+	$('#' + linkIdOrText + ', a:contains(' + linkIdOrText + ')').trigger('click');
 }
