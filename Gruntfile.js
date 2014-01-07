@@ -8,6 +8,11 @@ module.exports = function(grunt) {
 				ignores: ["./node_modules/**/*.js"]
 			}
 		},
+		karma: {
+			unit: {
+				configFile: 'karma.conf.js'
+			}
+		},
 		gitcommit: {
 			your_target: {
 				options:{
@@ -26,7 +31,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-git');
 	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-karma');
 
-	grunt.registerTask('test', ['jshint']);
+	grunt.registerTask('test', ['jshint', 'karma']);
 	grunt.registerTask('default',['test','gitcommit', 'shell:git_push']);
 };
