@@ -1,30 +1,41 @@
 (function($, module){
 	var Pageboy = function(context){
 		var contextElement = $(context),
-			linkSelectorFactory = new IdOrTextSelectorFactory('a'),
-			buttonSelectorFactory = new ButtonSelectorFactory();
+			links = new LinkRepository(contextElement),
+			buttons = new ButtonRepository(contextElement);
 
 		this.clickLink = function (linkIdOrText){
-			var linkSelector = linkSelectorFactory.create(linkIdOrText);
-			click(linkSelector);
+			var link = links.get(linkIdOrText);
+			link.click();
 		};
 
 		this.clickButton = function (buttonIdOrText){
-			var buttonSelector = buttonSelectorFactory.create(buttonIdOrText);
-			click(buttonSelector);
+			var button = buttons.get(buttonIdOrText);
+			button.click();
 		};
+	};
 
-		function click(selector){
-			contextElement
-				.find(selector)
-				.trigger('click');
-		}
+	var PageElement = function(context, selector){
+		var element = context.find(selector);
+
+		this.click = function(){
+			element.click();
+		};
 	};
 
 	var IdOrTextSelectorFactory = function(elementType){
 		var selectorFactories = [
 				new ElementByIdSelectorFactory(elementType),
 				new ElementByTextSelectorFactory(elementType)
+			],
+			multipleSelectorFactory = new MultipleSelectorFactory(selectorFactories);
+		this.create = multipleSelectorFactory.create;
+	};
+
+	var IdOrValueSelectorFactory = function(elementType){
+		var selectorFactories = [
+				new ElementByIdSelectorFactory(elementType),
+				new ElementByValueSelectorFactory(elementType)
 			],
 			multipleSelectorFactory = new MultipleSelectorFactory(selectorFactories);
 		this.create = multipleSelectorFactory.create;
@@ -58,14 +69,28 @@
 		};
 	};
 
-	var ButtonSelectorFactory = function(){
-			var selectorFactories = [
+	var LinkRepository = function(context){
+		var linkSelectorFactory = new IdOrTextSelectorFactory('a'),
+			pageElementFactory = new PageElementFactory(context, linkSelectorFactory);
+
+		this.get = pageElementFactory.create;
+	};
+
+	var ButtonRepository = function(context){
+		var buttonSelectorFactory = new MultipleSelectorFactory([
 				new IdOrTextSelectorFactory('button'),
-				new ElementByIdSelectorFactory('input[type=button]'),
-				new ElementByValueSelectorFactory('input[type=button]')
-			],
-			multipleSelectorFactory = new MultipleSelectorFactory(selectorFactories);
-		this.create = multipleSelectorFactory.create;
+				new IdOrValueSelectorFactory('input[type=button]')
+			]),
+			pageElementFactory = new PageElementFactory(context, buttonSelectorFactory);
+
+		this.get = pageElementFactory.create;
+	};
+
+	var PageElementFactory = function(context, selectorFactory){
+		this.create = function(elementQuery){
+			var selector = selectorFactory.create(elementQuery);
+			return new PageElement(context, selector);
+		};
 	};
 
 	(function exposeDSL(module, Pageboy){
