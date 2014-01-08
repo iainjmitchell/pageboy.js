@@ -1,15 +1,16 @@
-(function(module){
-	module.Pageboy = function(context){
-		var contextElement = $(context);
-
+(function($, module){
+	var Pageboy = function(context){
+		var contextElement = $(context),
+			linkSelectorFactory = new IdOrTextSelectorFactory('a'),
+			buttonSelectorFactory = new IdOrTextSelectorFactory('button');
 
 		this.clickLink = function (linkIdOrText){
-			var linkSelector = 'a#' + linkIdOrText + ', a:contains(' + linkIdOrText + ')';
+			var linkSelector = linkSelectorFactory.create(linkIdOrText);
 			click(linkSelector);
 		};
 
-		this.clickButton = function (buttonId){
-			var buttonSelector = 'button#' + buttonId + ', button:contains(' + buttonId + ')';
+		this.clickButton = function (buttonIdOrText){
+			var buttonSelector = buttonSelectorFactory.create(buttonIdOrText);
 			click(buttonSelector);
 		};
 
@@ -20,8 +21,29 @@
 		}
 	};
 
-	var pageboy = new module.Pageboy(document);
+	var IdOrTextSelectorFactory = function(elementType){
+		this.create = function(elementIdOrText){
+			var selectors = [
+					buildIdSelector(elementIdOrText),
+					buildTextSelector(elementIdOrText)
+				],
+				idOrTextSelector = selectors.join(', ');
+			return idOrTextSelector;
+		};
 
-	module.clickLink = pageboy.clickLink;
-	module.clickButton = pageboy.clickButton;
-})(window);
+		function buildIdSelector(elementIdOrText){
+			return elementType + '#' + elementIdOrText;
+		}
+
+		function buildTextSelector(elementIdOrText){
+			return elementType + ':contains(' + elementIdOrText + ')';	
+		}
+	};
+
+	(function exposeDSL(module, Pageboy){
+		var pageboy = new Pageboy(document);
+		module.Pageboy = Pageboy;
+		module.clickLink = pageboy.clickLink;
+		module.clickButton = pageboy.clickButton;
+	})(module, Pageboy);
+})(jQuery, window);
