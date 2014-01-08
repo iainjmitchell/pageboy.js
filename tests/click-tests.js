@@ -1,5 +1,9 @@
 describe("Given that developer wants to simulate the click of an item on a a page", function(){
-	var TEST_FIXTURE_HTML = __html__['tests/click-test-fixture.html'];
+	var TEST_FIXTURE_HTML = __html__['tests/click-test-fixture.html'],
+		EXISTING_LINK_ID = 'existingLink',
+		EXISTING_BUTTON_ID = 'existingButton',
+		EXISTING_LINK_TEXT = 'a link',
+		EXISTING_BUTTON_TEXT = 'a button';
 
 	beforeEach(function(){
 		document.body.innerHTML = TEST_FIXTURE_HTML;
@@ -8,7 +12,6 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 	describe("When click link is called", function(){
 		describe("using an existing anchor's id", function(){
 			it("Then link is clicked", function(done){
-				var EXISTING_LINK_ID = 'existingLink';
 				$('#' + EXISTING_LINK_ID).click(function(){
 					done();
 				});
@@ -18,7 +21,6 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 
 		describe("using an existing button's id", function(){
 			it("Then button is NOT clicked", function(done){
-				var EXISTING_BUTTON_ID = 'existingButton';
 				$('#' + EXISTING_BUTTON_ID).click(function(){
 					done('Button should NOT have been clicked');
 				});
@@ -29,8 +31,6 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 
 		describe("using an existing anchor's link text", function(){
 			it("Then link is clicked", function(done){
-				var EXISTING_LINK_ID = 'existingLink',
-					EXISTING_LINK_TEXT = 'a link';
 				$('#' + EXISTING_LINK_ID).click(function(){
 					done();
 				});
@@ -42,7 +42,6 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 	describe("When click button is called", function(){
 		describe("using an existing button's id", function(){
 			it("Then button is clicked", function(done){
-				var EXISTING_BUTTON_ID = 'existingButton';
 				$('#' + EXISTING_BUTTON_ID).click(function(){
 					done();
 				});
@@ -52,8 +51,6 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 
 		describe("using an existing button's text", function(){
 			it("Then button is clicked", function(done){
-				var EXISTING_BUTTON_ID = 'existingButton',
-					EXISTING_BUTTON_TEXT = 'a button';
 				$('#' + EXISTING_BUTTON_ID).click(function(){
 					done();
 				});
