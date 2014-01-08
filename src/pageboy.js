@@ -9,7 +9,8 @@
 		};
 
 		this.clickButton = function (buttonId){
-			$('#' + buttonId).trigger('click');
+			var buttonSelector = '#' + buttonId;
+			click(buttonSelector);
 		};
 
 		function click(selector){
