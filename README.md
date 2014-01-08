@@ -25,10 +25,13 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 
 ###clicking
 
-* clickLink('id-of-anchor');
-* clickLink('text-of-anchor');
-* clickButton('id-of-button');
-* clickButton('text-on-button');
+| Command | HTML elements targeted |
+| --- | --- | 
+| clickLink(*'id-of-anchor'*); | anchor |
+| clickLink(*'text-of-anchor'*); | anchor |
+| clickButton(*'id-of-button'*); | button, input[type=button] |
+| clickButton(*'text-on-button'*); | button, input[type=button] |
+
 
 
 
