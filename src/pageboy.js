@@ -11,6 +11,7 @@
 
 		this.clickButton = function (buttonIdOrText){
 			var buttonSelector = buttonSelectorFactory.create(buttonIdOrText);
+			buttonSelector = buttonSelector + ', input[type=button]#' + buttonIdOrText;
 			click(buttonSelector);
 		};
 
