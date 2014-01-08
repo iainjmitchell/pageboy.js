@@ -5,13 +5,11 @@
 			buttons = new ButtonRepository(contextElement);
 
 		this.clickLink = function (linkIdOrText){
-			var link = links.get(linkIdOrText);
-			link.click();
+			links.get(linkIdOrText).click();
 		};
 
 		this.clickButton = function (buttonIdOrText){
-			var button = buttons.get(buttonIdOrText);
-			button.click();
+			buttons.get(buttonIdOrText).click();
 		};
 	};
 
