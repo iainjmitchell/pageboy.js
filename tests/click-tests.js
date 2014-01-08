@@ -5,7 +5,7 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 		EXISTING_BUTTON_ID = 'existingButton',
 		EXISTING_BUTTON_TEXT = 'a button',
 		EXISTING_INPUT_BUTTON_ID = 'existingInputButton',
-		EXISTING_INPUT_BUTTON_TEXT = 'an input button';
+		EXISTING_INPUT_BUTTON_VALUE = 'an input button';
 
 	beforeEach(function(){
 		document.body.innerHTML = TEST_FIXTURE_HTML;
@@ -90,6 +90,13 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 			});
 		});
 
-		
+		describe("using an existing input button's value", function(){
+			it("Then button is clicked", function(done){
+				$('#' + EXISTING_INPUT_BUTTON_ID).click(function(){
+					done();
+				});
+				clickButton(EXISTING_INPUT_BUTTON_VALUE);
+			});
+		});
 	});
 });

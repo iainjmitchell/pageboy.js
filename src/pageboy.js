@@ -52,10 +52,17 @@
 		};
 	};
 
+	var ElementByValueSelectorFactory = function(elementType){
+		this.create = function(elementIdOrText){
+			return elementType + '[value="' + elementIdOrText + '"]';
+		};
+	};
+
 	var ButtonSelectorFactory = function(){
 			var selectorFactories = [
 				new IdOrTextSelectorFactory('button'),
-				new ElementByIdSelectorFactory('input[type=button]')
+				new ElementByIdSelectorFactory('input[type=button]'),
+				new ElementByValueSelectorFactory('input[type=button]')
 			],
 			multipleSelectorFactory = new MultipleSelectorFactory(selectorFactories);
 		this.create = multipleSelectorFactory.create;
