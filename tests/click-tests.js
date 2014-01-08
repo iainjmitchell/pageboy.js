@@ -4,7 +4,8 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 		EXISTING_LINK_TEXT = 'a link',
 		EXISTING_BUTTON_ID = 'existingButton',
 		EXISTING_BUTTON_TEXT = 'a button',
-		EXISTING_INPUT_BUTTON_ID = 'existingInputButton';
+		EXISTING_INPUT_BUTTON_ID = 'existingInputButton',
+		EXISTING_INPUT_BUTTON_TEXT = 'an input button';
 
 	beforeEach(function(){
 		document.body.innerHTML = TEST_FIXTURE_HTML;
@@ -88,5 +89,7 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 				done();
 			});
 		});
+
+		
 	});
 });
