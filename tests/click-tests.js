@@ -50,6 +50,15 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 			});
 		});
 
-		
+		describe("using an existing button's text", function(){
+			it("Then button is clicked", function(done){
+				var EXISTING_BUTTON_ID = 'existingButton',
+					EXISTING_BUTTON_TEXT = 'a button';
+				$('#' + EXISTING_BUTTON_ID).click(function(){
+					done();
+				});
+				clickButton(EXISTING_BUTTON_TEXT);
+			});
+		});
 	});
 });

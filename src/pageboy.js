@@ -9,7 +9,7 @@
 		};
 
 		this.clickButton = function (buttonId){
-			var buttonSelector = '#' + buttonId;
+			var buttonSelector = '#' + buttonId + ', button:contains(' + buttonId + ')';
 			click(buttonSelector);
 		};
 
