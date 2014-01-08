@@ -16,7 +16,7 @@ $('#aButtonId').click();
 ...but with **pageboy.js** we have the click_button() function, which can take either the button ID OR the button label text. 
 
 ```javascript
-click_button('aButtonId');
+clickButton('aButtonId');
 ```
 
 It may seem a bit odd to have different calls for clicking of buttons and other controls (e.g. links), but the idea is to make the intent as clear as possible for the reader.
@@ -25,8 +25,8 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 
 ###clicking
 
-* click_link('id-of-anchor');
-* click_link('label-of-anchor');
+* clickLink('id-of-anchor');
+* clickLink('label-of-anchor');
 
 
 
