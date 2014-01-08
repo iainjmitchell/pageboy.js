@@ -38,4 +38,20 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 			});
 		});
 	});
+
+	describe("When click button is called", function(){
+		describe("using an existing button's id", function(){
+			it("Then button is clicked", function(done){
+				var EXISTING_BUTTON_ID = 'existingButton';
+				$('#' + EXISTING_BUTTON_ID).click(function(){
+					done();
+				});
+				clickButton(EXISTING_BUTTON_ID);
+			});
+		});
+	});
 });
+
+function clickButton(buttonId){
+	$('#' + buttonId).trigger('click');
+}
