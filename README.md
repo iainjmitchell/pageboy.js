@@ -26,7 +26,9 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 ###clicking
 
 * clickLink('id-of-anchor');
-* clickLink('label-of-anchor');
+* clickLink('text-of-anchor');
+* clickButton('id-of-button');
+* clickButton('text-on-button');
 
 
 
