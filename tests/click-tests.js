@@ -49,6 +49,16 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 			});
 		});
 
+		describe("using an existing anchor's id", function(){
+			it("Then link is NOT clicked", function(done){
+				$('#' + EXISTING_LINK_ID).click(function(){
+					done('Link should NOT be clicked');
+				});
+				clickButton(EXISTING_LINK_ID);
+				done();
+			});
+		});
+
 		describe("using an existing button's text", function(){
 			it("Then button is clicked", function(done){
 				$('#' + EXISTING_BUTTON_ID).click(function(){
