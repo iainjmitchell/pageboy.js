@@ -8,6 +8,10 @@
 			click(linkSelector);
 		};
 
+		this.clickButton = function (buttonId){
+			$('#' + buttonId).trigger('click');
+		};
+
 		function click(selector){
 			contextElement
 				.find(selector)
@@ -18,4 +22,5 @@
 	var pageboy = new module.Pageboy(document);
 
 	module.clickLink = pageboy.clickLink;
+	module.clickButton = pageboy.clickButton;
 })(window);

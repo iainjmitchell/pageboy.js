@@ -51,7 +51,3 @@ describe("Given that developer wants to simulate the click of an item on a a pag
 		});
 	});
 });
-
-function clickButton(buttonId){
-	$('#' + buttonId).trigger('click');
-}
