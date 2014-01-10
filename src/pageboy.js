@@ -12,17 +12,28 @@
 			buttons.get(buttonIdOrText).click();
 		};
 
-		this.fillIn = function (id){
-		
-		var labelForElement = contextElement.find('label:contains('+ id +')').attr('for');
-		var labelSelector = labelForElement ? ',#' + labelForElement : '';
-		var selector = '#' + id + labelSelector;
-		var textElement = new TextElement(contextElement, selector);
+		this.fillIn = function (textElementIdOrLabel){
+			var textElement = getTextElement(textElementIdOrLabel, contextElement);
 			return {
 				with : textElement.fillIn
 			};
 		};
+
+		function getTextElement(id, contextElement){
+			var selector = getSelector(id, contextElement);
+			return new TextElement(contextElement, selector);
+		}
+
+		function getSelector(id, contextElement){
+			var labelForElement = contextElement.find('label:contains('+ id +')').attr('for');
+			var labelSelector = labelForElement ? ',#' + labelForElement : '';
+			var selector = '#' + id + labelSelector;
+			return selector;
+		}
 	};
+
+
+
 
 	var TextElement = function(context, selector){
 		var element = context.find(selector);
