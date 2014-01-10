@@ -2,7 +2,8 @@
 	var Pageboy = function(context){
 		var contextElement = $(context),
 			links = new LinkRepository(contextElement),
-			buttons = new ButtonRepository(contextElement);
+			buttons = new ButtonRepository(contextElement),
+			textElements = new TextElementRepository(contextElement);
 
 		this.clickLink = function (linkIdOrText){
 			links.get(linkIdOrText).click();
@@ -13,16 +14,18 @@
 		};
 
 		this.fillIn = function (textElementIdOrLabel){
-			var textElement = getTextElement(textElementIdOrLabel, contextElement);
+			var textElement = textElements.get(textElementIdOrLabel);
 			return {
 				with : textElement.fillIn
 			};
 		};
+	};
 
-		function getTextElement(id, contextElement){
-			var selector = getSelector(id, contextElement);
+	var TextElementRepository = function(contextElement){
+		this.get = function(textElementIdOrLabel){
+			var selector = getSelector(textElementIdOrLabel, contextElement);
 			return new TextElement(contextElement, selector);
-		}
+		};
 
 		function getSelector(id, contextElement){
 			var labelForElement = contextElement.find('label:contains('+ id +')').attr('for');
@@ -31,9 +34,6 @@
 			return selector;
 		}
 	};
-
-
-
 
 	var TextElement = function(context, selector){
 		var element = context.find(selector);
