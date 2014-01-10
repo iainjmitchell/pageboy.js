@@ -22,7 +22,7 @@
 		};
 	};
 
-	var PageElement = function(context, selector){
+	var ClickableElement = function(context, selector){
 		var element = context.find(selector);
 
 		this.click = function(){
@@ -78,9 +78,9 @@
 
 	var LinkRepository = function(context){
 		var linkSelectorFactory = new IdOrTextSelectorFactory('a'),
-			pageElementFactory = new PageElementFactory(context, linkSelectorFactory);
+			clickableElementFactory = new ClickableElementFactory(context, linkSelectorFactory);
 
-		this.get = pageElementFactory.create;
+		this.get = clickableElementFactory.create;
 	};
 
 	var ButtonRepository = function(context){
@@ -88,15 +88,15 @@
 				new IdOrTextSelectorFactory('button'),
 				new IdOrValueSelectorFactory('input[type=button]')
 			]),
-			pageElementFactory = new PageElementFactory(context, buttonSelectorFactory);
+			clickableElementFactory = new ClickableElementFactory(context, buttonSelectorFactory);
 
-		this.get = pageElementFactory.create;
+		this.get = clickableElementFactory.create;
 	};
 
-	var PageElementFactory = function(context, selectorFactory){
+	var ClickableElementFactory = function(context, selectorFactory){
 		this.create = function(elementQuery){
 			var selector = selectorFactory.create(elementQuery);
-			return new PageElement(context, selector);
+			return new ClickableElement(context, selector);
 		};
 	};
 
