@@ -11,6 +11,15 @@
 		this.clickButton = function (buttonIdOrText){
 			buttons.get(buttonIdOrText).click();
 		};
+
+		this.fillIn = function (id){
+			var element = $('#' + id);
+			return {
+				with : function(value){
+					element.val(value);
+				}
+			};
+		};
 	};
 
 	var PageElement = function(context, selector){
@@ -96,5 +105,6 @@
 		module.Pageboy = Pageboy;
 		module.clickLink = pageboy.clickLink;
 		module.clickButton = pageboy.clickButton;
+		module.fillIn = pageboy.fillIn;
 	})(module, Pageboy);
 })(jQuery, window);
