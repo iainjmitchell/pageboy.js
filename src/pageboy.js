@@ -13,8 +13,11 @@
 		};
 
 		this.fillIn = function (id){
-			var selector = '#' + id,
-				textElement = new TextElement(contextElement, selector);
+		
+		var labelForElement = contextElement.find('label:contains('+ id +')').attr('for');
+		var labelSelector = labelForElement ? ',#' + labelForElement : '';
+		var selector = '#' + id + labelSelector;
+		var textElement = new TextElement(contextElement, selector);
 			return {
 				with : textElement.fillIn
 			};
