@@ -13,12 +13,19 @@
 		};
 
 		this.fillIn = function (id){
-			var element = $('#' + id);
+			var selector = '#' + id,
+				textElement = new TextElement(contextElement, selector);
 			return {
-				with : function(value){
-					element.val(value);
-				}
+				with : textElement.fillIn
 			};
+		};
+	};
+
+	var TextElement = function(context, selector){
+		var element = context.find(selector);
+
+		this.fillIn = function(value){
+			element.val(value);
 		};
 	};
 
