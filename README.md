@@ -32,6 +32,12 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 | clickButton(*'id-of-button'*); | button, input[type=button] |
 | clickButton(*'text-on-button'*); | button, input[type=button] |
 
+###interacting with forms
+
+| Command | HTML elements targeted |
+| fillIn(*'id-of-element'*); | input[type=text] |
+| fillIn(*'label-for-of-element'*); | input[type=text] |
+
 
 
 
