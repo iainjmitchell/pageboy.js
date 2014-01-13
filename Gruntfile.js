@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 		jshint: {
 			files: ["./**/*.js"],
 			options: {
-				ignores: ["./node_modules/**/*.js", "./coverage/**/*.js"]
+				ignores: ["./node_modules/**/*.js", "./coverage/**/*.js", "./src/**/*.min.js"]
 			}
 		},
 		karma: {
@@ -23,6 +23,13 @@ module.exports = function(grunt) {
 				},
 				dir: 'coverage',
 				root: ''
+			}
+		},
+		uglify: {
+			minify: {
+				files: {
+					'src/pageboy.min.js': ['src/pageboy.js']
+				}
 			}
 		},
 		gitcommit: {
@@ -44,11 +51,12 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-git');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-istanbul-coverage');
 
 	grunt.registerTask('test', ['jshint', 'karma', 'coverage', 'shell:delete_coverage_reports']);
-	grunt.registerTask('default',['test','gitcommit', 'shell:git_push']);
+	grunt.registerTask('default',['test', 'uglify:minify', 'gitcommit', 'shell:git_push']);
 };
