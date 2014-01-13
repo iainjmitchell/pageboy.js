@@ -30,5 +30,17 @@ describe("Given that developer wants to fill in an item on a a page", function()
 				textInputValue.should.equal(SET_VALUE);
 			});
 		});
+
+		describe("using an existing textarea's id", function(){
+			it("Then the textarea's value is set", function(){
+				var SET_VALUE = 'random value ' + Math.random(),
+					EXISTING_TEXTAREA_ID = 'existingTextArea';
+				
+				fillIn(EXISTING_TEXTAREA_ID).with(SET_VALUE);
+
+				var textAreaValue = $('#' + EXISTING_TEXTAREA_ID).val();
+				textAreaValue.should.equal(SET_VALUE);
+			});
+		});
 	});
 });

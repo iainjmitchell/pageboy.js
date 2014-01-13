@@ -138,6 +138,7 @@
 			var idOrLabelForSelectorFactory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=text]');
 			this.get = function(textElementIdOrLabel){
 				var selector = idOrLabelForSelectorFactory.create(textElementIdOrLabel);
+				selector = selector + ', textarea#' + textElementIdOrLabel;
 				return new TextElement(contextElement, selector);
 			};
 		};
