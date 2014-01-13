@@ -90,7 +90,8 @@
 			MultipleSelectorFactory : MultipleSelectorFactory,
 			IdOrTextSelectorFactory : IdOrTextSelectorFactory,
 			IdOrValueSelectorFactory : IdOrValueSelectorFactory,
-			IdOrLabelForSelectorFactory : IdOrLabelForSelectorFactory
+			IdOrLabelForSelectorFactory : IdOrLabelForSelectorFactory,
+			ElementByIdSelectorFactory : ElementByIdSelectorFactory
 		};
 	})();
 
@@ -135,10 +136,13 @@
 
 	var fillable = (function(selectors){
 		var TextElementRepository = function(contextElement){
-			var idOrLabelForSelectorFactory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=text]');
+			var textElementSelectorFactory = new selectors.MultipleSelectorFactory([
+					new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=text]'),
+					new selectors.ElementByIdSelectorFactory('textarea')
+				]);	
+
 			this.get = function(textElementIdOrLabel){
-				var selector = idOrLabelForSelectorFactory.create(textElementIdOrLabel);
-				selector = selector + ', textarea#' + textElementIdOrLabel;
+				var selector = textElementSelectorFactory.create(textElementIdOrLabel);
 				return new TextElement(contextElement, selector);
 			};
 		};
