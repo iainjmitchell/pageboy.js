@@ -138,7 +138,7 @@
 		var TextElementRepository = function(contextElement){
 			var textElementSelectorFactory = new selectors.MultipleSelectorFactory([
 					new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=text]'),
-					new selectors.ElementByIdSelectorFactory('textarea')
+					new selectors.IdOrLabelForSelectorFactory(contextElement, 'textarea')
 				]);	
 
 			this.get = function(textElementIdOrLabel){
