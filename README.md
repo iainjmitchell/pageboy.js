@@ -36,7 +36,7 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 
 | Command | HTML elements targeted |
 | --- | --- | 
-| fillIn(*'id-of-element'*); | input[type=text], input[type=password],textarea |
+| fillIn(*'id-of-element'*); | input[type=text], input[type=password], textarea |
 | fillIn(*'label-for-of-element'*); | input[type=text], input[type=password], textarea |
 
 
