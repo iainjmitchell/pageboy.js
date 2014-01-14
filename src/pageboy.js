@@ -138,12 +138,12 @@
 		var TextElementRepository = function(contextElement){
 			var textElementSelectorFactory = new selectors.MultipleSelectorFactory([
 					new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=text]'),
-					new selectors.IdOrLabelForSelectorFactory(contextElement, 'textarea')
+					new selectors.IdOrLabelForSelectorFactory(contextElement, 'textarea'),
+					new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=password]')
 				]);	
 
 			this.get = function(textElementIdOrLabel){
 				var selector = textElementSelectorFactory.create(textElementIdOrLabel);
-				selector = selector + ', input[type=password]#' + textElementIdOrLabel;
 				return new TextElement(contextElement, selector);
 			};
 		};

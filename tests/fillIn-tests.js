@@ -68,6 +68,17 @@ describe("Given that developer wants to fill in an item on a a page", function()
 			});
 		});
 
-		
+		describe("using an existing password input's label for", function(){
+			it("Then the password input's value is set", function(){
+				var SET_VALUE = 'random value ' + Math.random(),
+					EXISTING_PASSWORD_INPUTS_LABEL_FOR = 'Existing password input label',
+					EXISTING_PASSWORD_INPUTS_ID = 'existingPasswordInput';
+				
+				fillIn(EXISTING_PASSWORD_INPUTS_LABEL_FOR).with(SET_VALUE);
+
+				var passwordnputValue = $('#' + EXISTING_PASSWORD_INPUTS_ID).val();
+				passwordnputValue.should.equal(SET_VALUE);
+			});
+		});
 	});
 });
