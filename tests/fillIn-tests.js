@@ -55,5 +55,19 @@ describe("Given that developer wants to fill in an item on a a page", function()
 				textAreaValue.should.equal(SET_VALUE);
 			});
 		});
+
+		describe("using an existing password input's id", function(){
+			it("Then the password input's value is set", function(){
+				var SET_VALUE = 'random value ' + Math.random(),
+					EXISTING_PASSWORD_INPUTS_ID = 'existingPasswordInput';
+				
+				fillIn(EXISTING_PASSWORD_INPUTS_ID).with(SET_VALUE);
+
+				var passwordnputValue = $('#' + EXISTING_PASSWORD_INPUTS_ID).val();
+				passwordnputValue.should.equal(SET_VALUE);
+			});
+		});
+
+		
 	});
 });
