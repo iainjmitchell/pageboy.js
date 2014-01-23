@@ -13,7 +13,15 @@
     "grunt-git" : "*",
     "grunt-shell" : "*",
     "grunt-cli" : "*",
-    "grunt-istanbul-coverage" : "*"
+    "grunt-istanbul-coverage" : "*",
+    "gulp" : "*",
+    "gulp-karma" : "*",
+    "gulp-jshint" : "*",
+    "jshint-stylish" : "*",
+    "gulp-uglify" : "*",
+    "gulp-rename" : "*",
+    "gulp-clean" : "*",
+    "gulp-git" : "*"
   },
   "scripts":{
     "test": "./node_modules/grunt-cli/bin/grunt test"
