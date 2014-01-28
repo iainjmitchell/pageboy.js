@@ -4,7 +4,8 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	rename = require('gulp-rename'),
 	clean = require('gulp-clean'),
-	git = require('gulp-git');
+	git = require('gulp-git'),
+	coverageCheck = require('gulp-istanbul-enforcer');
 
 gulp.task('clean', function(){
 	return gulp
@@ -36,6 +37,22 @@ gulp.task('mocha', ['clean'], function () {
 		.pipe(karmaRun);
 });
 
+gulp.task('check-coverage',['test'], function(){
+	var options = {
+		thresholds : {
+			statements : 100,
+			branches : 100,
+			lines : 100,
+			functions : 100
+		},
+		coverageDirectory : 'coverage',
+		rootDirectory : ''
+	};
+	return gulp
+		.src('.')
+		.pipe(coverageCheck(options));
+});
+
 gulp.task('test', ['jshint', 'mocha']);
 
 gulp.task('minify', function(){
@@ -46,7 +63,7 @@ gulp.task('minify', function(){
     	.pipe(gulp.dest('src'));
 });
 
-gulp.task('push', ['test', 'minify'], function(){
+gulp.task('push', ['check-coverage', 'minify'], function(){
 	var commitMessage = gulp.env.message || 'no commit message';
 	console.log('Tests passed! Pushing code...');
 	return gulp

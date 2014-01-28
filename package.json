@@ -21,9 +21,10 @@
     "gulp-uglify" : "*",
     "gulp-rename" : "*",
     "gulp-clean" : "*",
-    "gulp-git" : "*"
+    "gulp-git" : "*",
+    "gulp-istanbul-enforcer" : "*"
   },
   "scripts":{
-    "test": "./node_modules/grunt-cli/bin/grunt test"
+    "test": "./node_modules/gulp/bin/gulp.js test"
   }
 }
