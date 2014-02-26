@@ -19,6 +19,12 @@
 				with : textElement.fillIn
 			};
 		};
+
+		this.findField = function (fieldId){
+			return {
+				value : $('#' + fieldId).val()
+			};
+		};
 	};
 
 	var selectors = (function(){
@@ -167,5 +173,6 @@
 		module.clickLink = pageboy.clickLink;
 		module.clickButton = pageboy.clickButton;
 		module.fillIn = pageboy.fillIn;
+		module.findField = pageboy.findField;
 	})(module, Pageboy);
 })(jQuery, window);

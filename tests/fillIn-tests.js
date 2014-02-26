@@ -1,4 +1,4 @@
-describe("Given that developer wants to fill in an item on a a page", function(){
+describe("Given that developer wants to fill in an item on a page", function(){
 	var TEST_FIXTURE_HTML = __html__['tests/fillIn-test-fixture.html'];
 
 	beforeEach(function(){
