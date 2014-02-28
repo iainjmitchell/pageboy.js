@@ -21,8 +21,10 @@
 		};
 
 		this.findField = function (fieldId){
+			var selectorFactory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=text]'),
+				elementSelector = selectorFactory.create(fieldId);	
 			return {
-				value : $('#' + fieldId).val()
+				value : contextElement.find(elementSelector).val()
 			};
 		};
 	};
