@@ -7,6 +7,8 @@
     "karma-mocha": "*",
     "karma-chai" : "*",
     "karma-coverage" : "*",
+    "karma-html2js-preprocessor" : "*",
+    "karma-phantomjs-launcher" : "*",
     "gulp" : "*",
     "gulp-karma" : "*",
     "gulp-jshint" : "*",
