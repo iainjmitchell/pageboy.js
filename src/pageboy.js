@@ -31,6 +31,10 @@
 		this.check = function(checkboxId){
 			$('#' + checkboxId).prop('checked', true);
 		};
+
+		this.uncheck = function(checkboxId){
+			$('#' + checkboxId).prop('checked', false);
+		};
 	};
 
 	var selectors = (function(){
@@ -181,5 +185,6 @@
 		module.fillIn = pageboy.fillIn;
 		module.findField = pageboy.findField;
 		module.check = pageboy.check;
+		module.uncheck = pageboy.uncheck;
 	})(module, Pageboy);
 })(jQuery, window);
