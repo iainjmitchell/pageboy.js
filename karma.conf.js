@@ -3,7 +3,7 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['mocha', 'chai'],
     files: [
-        'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+        'bower_components/jquery/dist/jquery.min.js',
         'src/**/*.js',
         'tests/**/*.html',
         'tests/**/*.js'

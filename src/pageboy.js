@@ -27,6 +27,10 @@
 				value : contextElement.find(elementSelector).val()
 			};
 		};
+
+		this.check = function(checkboxId){
+			$('#' + checkboxId).prop('checked', true);
+		};
 	};
 
 	var selectors = (function(){
@@ -176,5 +180,6 @@
 		module.clickButton = pageboy.clickButton;
 		module.fillIn = pageboy.fillIn;
 		module.findField = pageboy.findField;
+		module.check = pageboy.check;
 	})(module, Pageboy);
 })(jQuery, window);

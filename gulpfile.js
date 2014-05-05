@@ -26,7 +26,7 @@ gulp.task('mocha', ['clean'], function () {
 			action: 'run'
 		}),
 		files = [
-			'bower_components/jquery/jquery.min.js',
+			'bower_components/jquery/dist/jquery.min.js',
         	'src/**/*.js',
         	'tests/**/*.html',
         	'tests/**/*.js'
