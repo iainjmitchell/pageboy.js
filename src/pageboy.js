@@ -31,7 +31,6 @@
 		this.check = function(checkboxId){
 			var factory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=checkbox]');
 			var selector = factory.create(checkboxId);
-			console.log(selector);
 			$(selector).prop('checked', true);
 		};
 
