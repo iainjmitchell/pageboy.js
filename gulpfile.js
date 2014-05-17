@@ -64,7 +64,7 @@ gulp.task('minify', function(){
 });
 
 gulp.task('push', ['check-coverage', 'minify'], function(){
-	var commitMessage = gulp.env.m || 'no commit message';
+	var commitMessage = gulp.env.m || 'refactoring';
 	console.log('Tests passed! Pushing code...');
 	return gulp
 		.src('./.')

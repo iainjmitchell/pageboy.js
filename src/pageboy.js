@@ -3,7 +3,8 @@
 		var contextElement = $(context),
 			links = new clickable.LinkRepository(contextElement),
 			buttons = new clickable.ButtonRepository(contextElement),
-			textElements = new fillable.TextElementRepository(contextElement);
+			textElements = new fillable.TextElementRepository(contextElement),
+			checkboxes = new checkable.CheckBoxRepository(contextElement);
 
 		this.clickLink = function (linkIdOrText){
 			links.get(linkIdOrText).click();
@@ -29,9 +30,7 @@
 		};
 
 		this.check = function(checkboxId){
-			var factory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=checkbox]');
-			var selector = factory.create(checkboxId);
-			$(selector).prop('checked', true);
+			checkboxes.get(checkboxId).check();
 		};
 
 		this.uncheck = function(checkboxId){
@@ -176,6 +175,29 @@
 
 		return {
 			TextElementRepository : TextElementRepository
+		};
+	})(selectors);
+
+	var checkable = (function(selectors){
+		var CheckBoxRepository = function(contextElement){
+			var checkboxSelectorFactory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=checkbox]');
+
+			this.get = function(checkboxIdOrLabel){
+				var selector = checkboxSelectorFactory.create(checkboxIdOrLabel);
+				return new CheckboxElement(contextElement, selector);
+			};
+		};
+
+		var CheckboxElement = function(context, selector){
+			var element = context.find(selector);
+
+			this.check = function(){
+				element.prop('checked', true);
+			};
+		};
+
+		return {
+			CheckBoxRepository : CheckBoxRepository
 		};
 	})(selectors);
 
