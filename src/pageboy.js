@@ -29,12 +29,12 @@
 			};
 		};
 
-		this.check = function(checkboxId){
-			checkboxes.get(checkboxId).check();
+		this.check = function(checkboxIdOrLabel){
+			checkboxes.get(checkboxIdOrLabel).check();
 		};
 
-		this.uncheck = function(checkboxId){
-			checkboxes.get(checkboxId).uncheck();
+		this.uncheck = function(checkboxIdOrLabel){
+			checkboxes.get(checkboxIdOrLabel).uncheck();
 		};
 	};
 
