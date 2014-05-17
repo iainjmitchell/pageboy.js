@@ -34,7 +34,7 @@
 		};
 
 		this.uncheck = function(checkboxId){
-			$('#' + checkboxId).prop('checked', false);
+			checkboxes.get(checkboxId).uncheck();
 		};
 	};
 
@@ -193,6 +193,10 @@
 
 			this.check = function(){
 				element.prop('checked', true);
+			};
+
+			this.uncheck = function(){
+				element.prop('checked', false);
 			};
 		};
 
