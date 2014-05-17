@@ -39,6 +39,7 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 | fillIn(*'id-of-element'*); | input[type=text], input[type=password], textarea |
 | fillIn(*'label-for-of-element'*); | input[type=text], input[type=password], textarea |
 | check(*'id-of-checkbox'*); | input[type=checkbox] |
+| check(*'label-for-of-checkbox'*); | input[type=checkbox] |
 | uncheck(*'id-of-checkbox'*); | input[type=checkbox] |
 
 

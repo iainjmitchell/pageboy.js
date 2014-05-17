@@ -29,7 +29,10 @@
 		};
 
 		this.check = function(checkboxId){
-			$('#' + checkboxId).prop('checked', true);
+			var factory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=checkbox]');
+			var selector = factory.create(checkboxId);
+			console.log(selector);
+			$(selector).prop('checked', true);
 		};
 
 		this.uncheck = function(checkboxId){

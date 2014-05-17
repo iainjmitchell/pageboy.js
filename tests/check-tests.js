@@ -2,6 +2,7 @@
 describe("Given that developer wants to simulate the checking of an item on a a page", function(){
 	var TEST_FIXTURE_HTML = __html__['tests/check-test-fixture.html'],
 		EXISTING_CHECKBOX_ID = 'existingCheckbox',
+		EXISTING_CHECKBOX_LABEL = 'a label',
 		CHECKED_CHECKBOX_ID = 'checkedCheckbox';
 
 	beforeEach(function(){
@@ -12,6 +13,14 @@ describe("Given that developer wants to simulate the checking of an item on a a 
 		describe("using an existing checkboxes id", function(){
 			it("Then checkbox is checked", function(){
 				check(EXISTING_CHECKBOX_ID);
+				var checked = $('#' + EXISTING_CHECKBOX_ID).prop('checked');
+				checked.should.be.true;
+			});
+		});
+
+		describe("using an existing checkboxes label", function(){
+			it("Then checkbox is checked", function(){
+				check(EXISTING_CHECKBOX_LABEL);
 				var checked = $('#' + EXISTING_CHECKBOX_ID).prop('checked');
 				checked.should.be.true;
 			});
