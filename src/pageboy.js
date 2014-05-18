@@ -4,7 +4,8 @@
 			links = new clickable.LinkRepository(contextElement),
 			buttons = new clickable.ButtonRepository(contextElement),
 			textElements = new fillable.TextElementRepository(contextElement),
-			checkboxes = new checkable.CheckBoxRepository(contextElement);
+			checkboxes = new checkable.CheckBoxRepository(contextElement),
+			radioButtons = new checkable.RadioButtonRepository(contextElement);
 
 		this.clickLink = function (linkIdOrText){
 			links.get(linkIdOrText).click();
@@ -37,10 +38,8 @@
 			checkboxes.get(checkboxIdOrLabel).uncheck();
 		};
 
-		this.choose = function(radioButtonId){
-			var factory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=radio]');
-			var selector = factory.create(radioButtonId);
-			$(selector).prop('checked', true);
+		this.choose = function(radioButtonIdOrLabel){
+			radioButtons.get(radioButtonIdOrLabel).check();
 		};
 	};
 
@@ -190,11 +189,20 @@
 
 			this.get = function(checkboxIdOrLabel){
 				var selector = checkboxSelectorFactory.create(checkboxIdOrLabel);
-				return new CheckboxElement(contextElement, selector);
+				return new CheckableElement(contextElement, selector);
 			};
 		};
 
-		var CheckboxElement = function(context, selector){
+		var RadioButtonRepository = function(contextElement){
+			var checkboxSelectorFactory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=radio]');
+
+			this.get = function(radioButtonIdOrLabel){
+				var selector = checkboxSelectorFactory.create(radioButtonIdOrLabel);
+				return new CheckableElement(contextElement, selector);
+			};
+		};
+
+		var CheckableElement = function(context, selector){
 			var element = context.find(selector);
 
 			this.check = function(){
@@ -207,7 +215,8 @@
 		};
 
 		return {
-			CheckBoxRepository : CheckBoxRepository
+			CheckBoxRepository : CheckBoxRepository,
+			RadioButtonRepository : RadioButtonRepository
 		};
 	})(selectors);
 
