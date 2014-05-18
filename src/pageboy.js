@@ -36,6 +36,10 @@
 		this.uncheck = function(checkboxIdOrLabel){
 			checkboxes.get(checkboxIdOrLabel).uncheck();
 		};
+
+		this.choose = function(radioButtonId){
+			$('#' + radioButtonId).prop('checked', true);
+		};
 	};
 
 	var selectors = (function(){
@@ -214,5 +218,6 @@
 		module.findField = pageboy.findField;
 		module.check = pageboy.check;
 		module.uncheck = pageboy.uncheck;
+		module.choose = pageboy.choose;
 	})(module, Pageboy);
 })(jQuery, window);

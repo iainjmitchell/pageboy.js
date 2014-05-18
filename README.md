@@ -42,6 +42,7 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 | check(*'label-for-of-checkbox'*); | input[type=checkbox] |
 | uncheck(*'id-of-checkbox'*); | input[type=checkbox] |
 | uncheck(*'label-for-of-checkbox'*); | input[type=checkbox] |
+| choose(*'id-of-radiobutton'*); | input[type=radio] |
 
 
 
