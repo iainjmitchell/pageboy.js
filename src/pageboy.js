@@ -38,7 +38,9 @@
 		};
 
 		this.choose = function(radioButtonId){
-			$('#' + radioButtonId).prop('checked', true);
+			var factory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=radio]');
+			var selector = factory.create(radioButtonId);
+			$(selector).prop('checked', true);
 		};
 	};
 
