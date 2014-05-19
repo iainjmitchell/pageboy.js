@@ -5,7 +5,8 @@
 			buttons = new clickable.ButtonRepository(contextElement),
 			textElements = new fillable.TextElementRepository(contextElement),
 			checkboxes = new checkable.CheckBoxRepository(contextElement),
-			radioButtons = new checkable.RadioButtonRepository(contextElement);
+			radioButtons = new checkable.RadioButtonRepository(contextElement),
+			selects = new selectable.SelectRepository(contextElement);
 
 		this.clickLink = function (linkIdOrText){
 			links.get(linkIdOrText).click();
@@ -45,7 +46,7 @@
 		this.select = function(optionText){
 			return {
 				from : function(selectId){
-					$('#' + selectId).val(optionText);
+					selects.get(selectId).choose(optionText);
 				}
 			};
 		};
@@ -225,6 +226,26 @@
 		return {
 			CheckBoxRepository : CheckBoxRepository,
 			RadioButtonRepository : RadioButtonRepository
+		};
+	})(selectors);
+
+	var selectable = (function(selectors){
+		var SelectRepository = function(contextElement){
+			this.get = function(selectId){
+				return new SelectElement(contextElement, '#' + selectId);
+			};
+		};
+
+		var SelectElement = function(context, selector){
+			var element = context.find(selector);
+
+			this.choose = function(optionText){
+				element.val(optionText);
+			};
+		};
+
+		return {
+			SelectRepository : SelectRepository
 		};
 	})(selectors);
 

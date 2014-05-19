@@ -19,5 +19,16 @@ describe("Given that developer wants to simulate the selecting of an option with
 				});
 			});
 		});
+
+		// describe("using an existing selects's label", function(){
+		// 	describe("and an existing option", function(){
+		// 		it("Then the option is selected", function(){
+		// 			var SELECTED_OPTION = 'Two';
+		// 			select(SELECTED_OPTION).from(EXISTING_SELECT_LABEL);
+		// 			var selectedOption = $('#' + EXISTING_SELECT_ID + ' option:selected').text();
+		// 			selectedOption.should.equal(SELECTED_OPTION);
+		// 		});
+		// 	});
+		// });
 	});
 });
