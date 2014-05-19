@@ -44,6 +44,7 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 | uncheck(*'label-for-of-checkbox'*); | input[type=checkbox] |
 | choose(*'id-of-radiobutton'*); | input[type=radio] |
 | choose(*'label-for-of-radiobutton'*); | input[type=radio] |
+| select(*'option-text'*).from(*'id-of-select'*); | select |
 
 
 

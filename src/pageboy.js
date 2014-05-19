@@ -41,6 +41,14 @@
 		this.choose = function(radioButtonIdOrLabel){
 			radioButtons.get(radioButtonIdOrLabel).check();
 		};
+
+		this.select = function(optionText){
+			return {
+				from : function(selectId){
+					$('#' + selectId).val(optionText);
+				}
+			};
+		};
 	};
 
 	var selectors = (function(){
@@ -221,14 +229,15 @@
 	})(selectors);
 
 	(function exposeDSL(module, Pageboy){
-		var pageboy = new Pageboy(document);
+		var page = new Pageboy(document);
 		module.Pageboy = Pageboy;
-		module.clickLink = pageboy.clickLink;
-		module.clickButton = pageboy.clickButton;
-		module.fillIn = pageboy.fillIn;
-		module.findField = pageboy.findField;
-		module.check = pageboy.check;
-		module.uncheck = pageboy.uncheck;
-		module.choose = pageboy.choose;
+		module.clickLink = page.clickLink;
+		module.clickButton = page.clickButton;
+		module.fillIn = page.fillIn;
+		module.findField = page.findField;
+		module.check = page.check;
+		module.uncheck = page.uncheck;
+		module.choose = page.choose;
+		module.select = page.select;
 	})(module, Pageboy);
 })(jQuery, window);
