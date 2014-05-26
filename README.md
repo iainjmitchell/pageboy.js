@@ -45,6 +45,7 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 | choose(*'id-of-radiobutton'*); | input[type=radio] |
 | choose(*'label-for-of-radiobutton'*); | input[type=radio] |
 | select(*'option-text'*).from(*'id-of-select'*); | select |
+| select(*'option-text'*).from(*'label-for-of-select'*); | select |
 
 
 

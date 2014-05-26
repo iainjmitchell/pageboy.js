@@ -231,8 +231,11 @@
 
 	var selectable = (function(selectors){
 		var SelectRepository = function(contextElement){
+			var selectSelectorFactory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'select');
+
 			this.get = function(selectId){
-				return new SelectElement(contextElement, '#' + selectId);
+				var selector = selectSelectorFactory.create(selectId);
+				return new SelectElement(contextElement, selector);
 			};
 		};
 
