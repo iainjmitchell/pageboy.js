@@ -24,10 +24,11 @@
 		};
 
 		this.findField = function (fieldIdOrLabel){
+			var textElement = textElements.get(fieldIdOrLabel);
 			var selectorFactory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=text]'),
 				elementSelector = selectorFactory.create(fieldIdOrLabel);	
 			return {
-				value : contextElement.find(elementSelector).val()
+				value : textElement.value()
 			};
 		};
 
@@ -184,6 +185,10 @@
 
 			this.fillIn = function(value){
 				element.val(value);
+			};
+
+			this.value = function(){
+				return element.val();
 			};
 		};
 

@@ -51,6 +51,6 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 
 | Command | HTML elements targeted |
 | --- | --- | 
-| findField(*'id-of-element'*).value | input[type=text] |
-| findField(*'label-for-of-element'*).value | input[type=text] |
+| findField(*'id-of-element'*).value | input[type=text], input[type=password], textarea |
+| findField(*'label-for-of-element'*).value | input[type=text], input[type=password], textarea |
 
