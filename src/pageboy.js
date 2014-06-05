@@ -23,9 +23,9 @@
 			};
 		};
 
-		this.findField = function (fieldId){
+		this.findField = function (fieldIdOrLabel){
 			var selectorFactory = new selectors.IdOrLabelForSelectorFactory(contextElement, 'input[type=text]'),
-				elementSelector = selectorFactory.create(fieldId);	
+				elementSelector = selectorFactory.create(fieldIdOrLabel);	
 			return {
 				value : contextElement.find(elementSelector).val()
 			};

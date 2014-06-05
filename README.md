@@ -47,5 +47,10 @@ It may seem a bit odd to have different calls for clicking of buttons and other 
 | select(*'option-text'*).from(*'id-of-select'*); | select |
 | select(*'option-text'*).from(*'label-for-of-select'*); | select |
 
+###finding
 
+| Command | HTML elements targeted |
+| --- | --- | 
+| findField(*'id-of-element'*).value | input[type=text] |
+| findField(*'label-for-of-element'*).value | input[type=text] |
 
